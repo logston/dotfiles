@@ -10,7 +10,8 @@ do
 		continue
 	fi
 
-	ln -s $file ~/$file
+	rm ~/$file
+	ln -s $(pwd)/$file ~/$file
 
-	echo "Placed $file -> ~/$file"
+	echo "Placed $(pwd)/$file -> ~/$file"
 done
