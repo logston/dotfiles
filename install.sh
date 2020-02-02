@@ -1,6 +1,8 @@
 #!/bin/bash
 
-git clone git@github.com:logston/dotfiles.git ~/.dotfiles
+if [ ! -d ~/.dotfiles ]; then
+    git clone git@github.com:logston/dotfiles.git ~/.dotfiles
+fi
 
 cd ~/.dotfiles
 
