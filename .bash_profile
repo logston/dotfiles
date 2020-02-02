@@ -35,7 +35,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 eval "$(pyenv init -)"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
 eval "$(pyenv virtualenv-init -)"
+fi
 
 eval "$(pipenv --completion)"
 
@@ -69,4 +72,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Hom
 alias pa='pyenv activate'
 alias gpot='git push origin HEAD && git push origin --tags'
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
 if [ /usr/local/Cellar/kubernetes-cli/1.15.1/bin/kubectl ]; then source <(kubectl completion zsh); fi
+fi
