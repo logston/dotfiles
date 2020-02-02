@@ -1,5 +1,9 @@
 #!/bin/bash
 
+git clone git@github.com:logston/dotfiles.git ~/.dotfiles
+
+cd ~/.dotfiles
+
 for file in .*;
 do
 	if [ ! -f "$file" ]; then
@@ -15,3 +19,5 @@ do
 
 	echo "Placed $(pwd)/$file -> ~/$file"
 done
+
+cd -
