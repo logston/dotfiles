@@ -12,6 +12,10 @@ do
 		continue
 	fi
 
+	if [ "$file" == '.ctags-index' ]; then
+		continue
+	fi
+
 	if [ "$file" == '.' ] || [ "$file" == '..' ]; then 
 		continue
 	fi
