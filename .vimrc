@@ -22,6 +22,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'Valloric/YouCompleteMe'
+Plug 'victorze/foo'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'w0rp/ale'
 
@@ -126,7 +127,11 @@ set softtabstop=0
 "ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" --- Highlights ---
+highlight OverLength ctermbg=LightRed
+" Set so Vim Jedi uses reasonable colors for Pmenu/PmenuSel. Requires a
+" 'github' colorscheme. Installed 'github' from 'victorze/foo'.
+let g:colors_name = 'github'
 
 " --- GIT ---
 au FileType gitcommit setlocal spell
