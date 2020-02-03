@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'chiel92/vim-autoformat'
 Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
@@ -43,7 +44,6 @@ set scrolloff=5   " determines the number of context lines you would like to see
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
 set fileformat=unix
-let g:ycm_autoclose_preview_window_after_completion=1
 
 " Spelling
 set spell
@@ -53,7 +53,9 @@ set encoding=utf-8
 
 " Status line and lightline
 set laststatus=2  " display the status line always
+set noshowmode  " don't display -- INSERT -- in lower area. Obsolete due to light line
 let g:lightline = {
+\   'colorscheme': 'wombat',
 \   'active': {
 \     'left': [
 \         ['mode', 'paste'],
@@ -105,6 +107,12 @@ function! GutentagsStatus()
 endfunction
 let g:gutentags_ctags_tagfile = '.ctags-index'
 
+" YCM
+" Pull from keywords in the current file, other buffers (closed or still
+" open), and from the current tags file.
+set complete=.,b,u,]
+let g:ycm_autoclose_preview_window_after_completion=1
+
 " === LANGUAGE SPECIFICS ===
 syntax on
 syntax enable     " enable syntax highlighting
@@ -133,6 +141,7 @@ highlight OverLength ctermbg=LightRed
 " 'github' colorscheme. Installed 'github' from 'victorze/foo'.
 let g:colors_name = 'github'
 
+
 " --- GIT ---
 au FileType gitcommit setlocal spell
 au Filetype gitcommit set textwidth=72
@@ -153,6 +162,18 @@ let b:ale_fixers = ['black', 'isort', 'yapf', 'remove_trailing_lines', 'trim_whi
 au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set tabstop=2 |
     \ set shiftwidth=2
+
+" --- Generic Helper Functions ---
+au BufEnter * call CloseQuickfix()
+function! CloseQuickfix()
+  " if the window is quickfix go on
+  if &buftype == "quickfix"
+    " if this window is last on screen quit without warning
+    if winbufnr(2) == -1
+      quit!
+    endif
+  endif
+endfunction
 
 " === FINAL VIMRC TASKS ===
 " allows for per-project configuration files

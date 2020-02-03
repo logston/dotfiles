@@ -12,7 +12,7 @@ export TERM=screen-256color
 export FZF_DEFAULT_OPTS='--color light'
 
 ### Python
-#export PYTHON_CONFIGURE_OPTS="--enable-shared"
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 #export CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)"
 #
 #### Pyenv
