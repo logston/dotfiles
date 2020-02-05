@@ -42,21 +42,30 @@ fi
 
 eval "$(pipenv --completion)"
 
+export PATH="$HOME/.poetry/bin:$PATH"
+
 # Google SDK
-export CLOUDSDK_PYTHON="/Users/paul/.pyenv/versions/2.7.15/bin/python2"
-export PATH="/Users/paul/Code/google-cloud-sdk/bin:$PATH"
+export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.15/bin/python2"
+export PATH="$HOME/Code/google-cloud-sdk/bin:$PATH"
 
 # Better Kubernetes
+if [[ "$OSTYPE" == "darwin"* ]]; then
 export PATH="/usr/local/Cellar/kubernetes-cli/1.15.1/bin:$PATH"
+if [ /usr/local/Cellar/kubernetes-cli/1.15.1/bin/kubectl ]; then source <(kubectl completion zsh); fi
+fi
 
 # OpenSSL
 #export PATH="$(brew --prefix openssl)/bin:$PATH"
 
 ### Postgres
+if [[ "$OSTYPE" == "darwin"* ]]; then
 export PATH="/Applications/Postgres.app/Contents/Versions/11/bin:$PATH"
+fi
 
 # Rust
+if [[ "$OSTYPE" == "darwin"* ]]; then
 export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # GO
 export GOPATH=$HOME/.go
@@ -66,12 +75,15 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH=$PATH:~/Code/git
 
 ### Java
+if [[ "$OSTYPE" == "darwin"* ]]; then
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+fi
 
 ######### Aliases
-alias pa='pyenv activate'
 alias gpot='git push origin HEAD && git push origin --tags'
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-if [ /usr/local/Cellar/kubernetes-cli/1.15.1/bin/kubectl ]; then source <(kubectl completion zsh); fi
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t Default || tmux new -s Default
+  fi
 fi

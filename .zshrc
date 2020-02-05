@@ -64,9 +64,14 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  aws
+  poetry
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Poetry
+fpath+=~/.zfunc
 
 source $HOME/.bash_profile
 
