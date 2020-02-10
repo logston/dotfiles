@@ -128,7 +128,7 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert spaces
 set expandtab
-set smarttab
+"set smarttab
 " Default softtabstop to tabstop
 set softtabstop=0
 

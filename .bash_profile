@@ -45,7 +45,7 @@ eval "$(pipenv --completion)"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # Google SDK
-export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.15/bin/python2"
+export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.17/bin/python2"
 export PATH="$HOME/Code/google-cloud-sdk/bin:$PATH"
 
 # Better Kubernetes
@@ -81,6 +81,10 @@ fi
 
 ######### Aliases
 alias gpot='git push origin HEAD && git push origin --tags'
+# Bluetooth fix
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+#alias soundon = 'pacmd set-card-profile device_name alsa_card.pci-0000_00_1f.3'
+fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
