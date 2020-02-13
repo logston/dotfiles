@@ -22,7 +22,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'victorze/foo'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'w0rp/ale'
@@ -110,8 +110,8 @@ let g:gutentags_ctags_tagfile = '.ctags-index'
 " YCM
 " Pull from keywords in the current file, other buffers (closed or still
 " open), and from the current tags file.
-set complete=.,b,u,]
-let g:ycm_autoclose_preview_window_after_completion=1
+"set complete=.,b,u,]
+"let g:ycm_autoclose_preview_window_after_completion=1
 
 " === LANGUAGE SPECIFICS ===
 syntax on
