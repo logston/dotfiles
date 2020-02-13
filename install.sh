@@ -16,6 +16,10 @@ do
 		continue
 	fi
 
+	if [ "$file" == '.gitignore' ]; then
+		continue
+	fi
+
 	if [ "$file" == '.' ] || [ "$file" == '..' ]; then 
 		continue
 	fi

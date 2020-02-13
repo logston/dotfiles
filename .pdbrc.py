@@ -1,3 +1,6 @@
+"""
+Configuration for pdb++
+"""
 import pdb
 
 
