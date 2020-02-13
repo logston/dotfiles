@@ -21,9 +21,17 @@ eval "$(pyenv init -)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
+#### pipx
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
+export PATH="$HOME/.local/bin:$PATH"
+
 # Google SDK
-export CLOUDSDK_PYTHON="$PYENV_ROOT/versions/2.7.17/bin/python2"
-export PATH="$HOME/Code/google-cloud-sdk/bin:$PATH"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/paul/.google-cloud-sdk/path.zsh.inc' ]; then . '/Users/paul/.google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/paul/.google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/paul/.google-cloud-sdk/completion.zsh.inc'; fi
 
 # Better Kubernetes
 if [[ "$OSTYPE" == "darwin"* ]]; then
