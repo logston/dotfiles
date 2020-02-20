@@ -2,30 +2,32 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'chiel92/vim-autoformat'
+"Plug 'chiel92/vim-autmformat'
 Plug 'davidhalter/jedi-vim'
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'editorconfig/editorconfig-vim'
+"Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
+Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " https://bolt80.com/gutentags/
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'scrooloose/nerdtree'
+"Plug 'mattn/emmet-vim'
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'preservim/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-eunuch'
+"Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
-"Plug 'Valloric/YouCompleteMe'
+"Plug 'tpope/vim-obsession'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'victorze/foo'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'w0rp/ale'
+"Plug 'vim-scripts/indentpython.vim'
+Plug 'dense-analysis/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -141,7 +143,6 @@ highlight OverLength ctermbg=LightRed
 " 'github' colorscheme. Installed 'github' from 'victorze/foo'.
 let g:colors_name = 'github'
 
-
 " --- GIT ---
 au FileType gitcommit setlocal spell
 au Filetype gitcommit set textwidth=72
@@ -154,9 +155,16 @@ au BufNewFile,BufRead *.py
     \ set colorcolumn=101 |
     \ match OverLength /\%101v.\+/
 let g:pymode_python = 'python3'
+let g:jedi#completions_enabled = 0
 
 " let b:ale_fix_on_save = 1
-let b:ale_fixers = ['black', 'isort', 'yapf', 'remove_trailing_lines', 'trim_whitespace']
+" let g:ale_linters = {
+" \   'python': ['flake8'],
+" \}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['flake8', 'isort', 'pycodestyle'],
+\}
 
 " frontend
 au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
