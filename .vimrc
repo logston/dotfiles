@@ -2,32 +2,22 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-"Plug 'chiel92/vim-autmformat'
-Plug 'davidhalter/jedi-vim'
-Plug 'deoplete-plugins/deoplete-jedi'
-"Plug 'editorconfig/editorconfig-vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
 Plug 'edkolev/tmuxline.vim'
-Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-" https://bolt80.com/gutentags/
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
-"Plug 'mattn/emmet-vim'
-"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'preservim/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
-"Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-obsession'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'victorze/foo'
-"Plug 'vim-scripts/indentpython.vim'
-Plug 'dense-analysis/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -65,13 +55,11 @@ let g:lightline = {
 \     ],
 \     'right': [
 \         ['lineinfo'],
-\         ['percent'],
-\         ['op', 'fileformat', 'fileencoding', 'filetype']
+\         ['percent']
 \     ]
 \   },
 \   'component_function': {
 \      'filename': 'LightLineFilename',
-\      'op': 'GutentagsStatus',
 \   },
 \ }
 
@@ -98,22 +86,7 @@ set incsearch " incrementally highlight as search takes place
 nnoremap <C-f> :GFiles<CR>
 " String search
 nnoremap <C-h> :Rg<CR>
-noremap  <C-g> :exec 'Rg' expand('<cword>')<CR>
-" Tag search
-nnoremap <C-p> :TagbarToggle<CR>
-
-" ctags
-" To know when Gutentags is generating tags
-function! GutentagsStatus()
-    return gutentags#statusline()
-endfunction
-let g:gutentags_ctags_tagfile = '.ctags-index'
-
-" YCM
-" Pull from keywords in the current file, other buffers (closed or still
-" open), and from the current tags file.
-"set complete=.,b,u,]
-"let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap  <C-g> :exec 'Rg' expand('<cword>')<CR>
 
 " === LANGUAGE SPECIFICS ===
 syntax on
@@ -139,9 +112,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " --- Highlights ---
 highlight OverLength ctermbg=LightRed
-" Set so Vim Jedi uses reasonable colors for Pmenu/PmenuSel. Requires a
-" 'github' colorscheme. Installed 'github' from 'victorze/foo'.
-let g:colors_name = 'github'
 
 " --- GIT ---
 au FileType gitcommit setlocal spell
@@ -154,17 +124,6 @@ au BufNewFile,BufRead *.py
     \ set shiftwidth=4 |
     \ set colorcolumn=101 |
     \ match OverLength /\%101v.\+/
-let g:pymode_python = 'python3'
-let g:jedi#completions_enabled = 0
-
-" let b:ale_fix_on_save = 1
-" let g:ale_linters = {
-" \   'python': ['flake8'],
-" \}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['flake8', 'isort', 'pycodestyle'],
-\}
 
 " frontend
 au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
@@ -182,6 +141,37 @@ function! CloseQuickfix()
     endif
   endif
 endfunction
+
+" --- LSP Vim ---
+"
+let g:lsp_settings = {
+\   'pyls': {
+\     'workspace_config': {
+\       'pyls': {
+\         'configurationSources': ['flake8']
+\       }
+\     }
+\   },
+\}
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> g] <plug>(lsp-definition)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_delay = 0
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/.vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/.vim.asyncomplete.log')
 
 " === FINAL VIMRC TASKS ===
 " allows for per-project configuration files

@@ -60,18 +60,38 @@ export PATH="$GOPATH/bin:$PATH"
 ### GIT
 export PATH="$HOME/Code/git:$PATH"
 
+alias gpoht='git push origin HEAD && git push origin --tags'
+alias gt='git tag'
+alias gdmh='git diff master HEAD'
+
+git-help() {
+  echo "gt — git tag"
+  echo "gdct — git describe --tags 'git rev-list --tags --max-count=1'"
+  echo "gpoat — git push origin --all && git push origin --tags"
+  echo "gpoht — git push origin HEAD && git push origin tag"
+  echo "gdtag - git tag --delete <tag> && git push origin :refs/tags/<tag>"
+  echo "gdmh - git diff master HEAD"
+}
+
+gdtag() {
+    git tag --delete "$1" && git push origin ":refs/tags/$1"
+}
+
 ### Java
 if [[ "$OSTYPE" == "darwin"* ]]; then
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+export JRE_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home/jre
 fi
+
+### Spark
+export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.4/libexec
+export PATH="/usr/local/Cellar/apache-spark/2.4.4/bin:$PATH"
+
 
 ### 15Five Functions
 set-aws-env() {
     source /Users/paul/Code/15five/aws-cli-tooling/set-env.sh
 }
-
-######### Aliases
-alias gpot='git push origin HEAD && git push origin --tags'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
