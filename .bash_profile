@@ -89,9 +89,19 @@ export PATH="/usr/local/Cellar/apache-spark/2.4.4/bin:$PATH"
 
 
 ### 15Five Functions
-set-aws-env() {
-    source /Users/paul/Code/15five/aws-cli-tooling/set-env.sh
+set-sts-env() {
+    source /Users/paul/Code/15five/aws-cli-tooling/set-sts-env.sh
 }
+
+set-deploy-env() {
+    source /Users/paul/Code/15five/aws-cli-tooling/set-deploy-env.sh
+}
+
+set-pg() {
+    source /Users/paul/Code/15five/aws-cli-tooling/set-pg-env.sh
+}
+# AWS_ROLE_NAME is used by our TG code
+export AWS_ROLE_NAME=FFAdministrator
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
