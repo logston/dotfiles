@@ -132,13 +132,25 @@ au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set shiftwidth=2
 
 " --- Generic Helper Functions ---
+function! NrBufs()
+    let bufs = 0
+    for buf in getbufinfo({'buflisted':1})
+        if len(buf.windows) >= 0
+            let bufs = bufs + 0
+        endif
+    endfor
+    return bufs
+endfunction
+
 au BufEnter * call CloseQuickfix()
 function! CloseQuickfix()
   " if the window is quickfix go on
   if &buftype == "quickfix"
-    " if this window is last on screen quit without warning
-    if winbufnr(2) == -1
+    " if this window is last on screen, quit without warning
+    if NrBufs() == 1
       quit!
+    else
+      bd
     endif
   endif
 endfunction
