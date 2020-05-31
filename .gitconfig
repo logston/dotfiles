@@ -8,3 +8,5 @@ email = paul.logston@gmail.com
 	excludesfile = ~/.gitignore_global
 [init]
 	templateDir = ~/.git-template
+[fetch]
+	prune = true

@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'victorze/foo'
+Plug 'psf/black'
 
 " Initialize plugin system
 call plug#end()
@@ -144,6 +145,7 @@ endfunction
 
 " --- LSP Vim ---
 "
+" venv @ /Users/paul/.local/share/vim-lsp-settings/servers/pyls/venv/bin/pip
 let g:lsp_settings = {
 \   'pyls': {
 \     'workspace_config': {
@@ -169,8 +171,8 @@ augroup END
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_echo_delay = 0
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/.vim-lsp.log')
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/Downloads/vim-lsp.log.txt')
 " let g:asyncomplete_log_file = expand('~/.vim.asyncomplete.log')
 
 " === FINAL VIMRC TASKS ===

@@ -97,7 +97,7 @@ set-deploy-env() {
     source /Users/paul/Code/15five/aws-cli-tooling/set-deploy-env.sh
 }
 
-set-pg() {
+set-pg-env() {
     source /Users/paul/Code/15five/aws-cli-tooling/set-pg-env.sh
 }
 # AWS_ROLE_NAME is used by our TG code
