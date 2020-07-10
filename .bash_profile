@@ -44,6 +44,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 export PATH="/usr/local/Cellar/kubernetes-cli/1.15.1/bin:$PATH"
 source <(kubectl completion zsh)
 fi
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 ### Postgres
 if [[ "$OSTYPE" == "darwin"* ]]; then

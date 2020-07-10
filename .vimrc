@@ -19,6 +19,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'victorze/foo'
 Plug 'psf/black'
+Plug 'fisadev/vim-isort'
+Plug '~/Code/vim/paul'
 
 " Initialize plugin system
 call plug#end()
@@ -30,13 +32,16 @@ set backspace=eol,start,indent       " set backspace
 set cursorline cursorcolumn          " show a visual line under the cursor's current line
 set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 set nowrap        " display long lines as just one line
-set number        " show line numbers set showcmd
+set number        " show line numbers
 set showmatch     " show the matching part of the pair for [] {} and ()
 set wildmenu      " used for command line completion
 set scrolloff=5   " determines the number of context lines you would like to see above and below the cursor
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
 set fileformat=unix
+set showcmd
+" set verbose=9
+" set verbosefile=~/vim.log
 
 " Spelling
 set spell
@@ -80,6 +85,9 @@ noremap <C-l>    :bn<CR>
 noremap <C-8>    :bd<CR>
 noremap <C-w>    <C-w>w
 
+" let mapleader = ","
+"let maplocalleader = "\\"
+
 " === SEARCH ===
 set hlsearch  " highlight search
 set incsearch " incrementally highlight as search takes place
@@ -108,8 +116,9 @@ set expandtab
 " Default softtabstop to tabstop
 set softtabstop=0
 
-"ignore files in NERDTree
+" --- NERDTree ---
 let NERDTreeIgnore=['\.pyc$', '\~$']
+map <C-p> :NERDTreeToggle<CR>
 
 " --- Highlights ---
 highlight OverLength ctermbg=LightRed
@@ -126,34 +135,12 @@ au BufNewFile,BufRead *.py
     \ set colorcolumn=101 |
     \ match OverLength /\%101v.\+/
 
+nnoremap <Leader>i :%! isort --stdout %<CR><CR>
+
 " frontend
 au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set tabstop=2 |
     \ set shiftwidth=2
-
-" --- Generic Helper Functions ---
-function! NrBufs()
-    let bufs = 0
-    for buf in getbufinfo({'buflisted':1})
-        if len(buf.windows) >= 0
-            let bufs = bufs + 0
-        endif
-    endfor
-    return bufs
-endfunction
-
-au BufEnter * call CloseQuickfix()
-function! CloseQuickfix()
-  " if the window is quickfix go on
-  if &buftype == "quickfix"
-    " if this window is last on screen, quit without warning
-    if NrBufs() == 1
-      quit!
-    else
-      bd
-    endif
-  endif
-endfunction
 
 " --- LSP Vim ---
 "
@@ -172,6 +159,9 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     nmap <buffer> g] <plug>(lsp-definition)
+    nmap <buffer> gd <plug>(lsp-definition)
+    " disable ctags
+    nnoremap <C-]> <nop>
 endfunction
 
 augroup lsp_install
@@ -181,10 +171,13 @@ augroup lsp_install
 augroup END
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_echo_delay = 0
-"let g:lsp_log_verbose = 1
-"let g:lsp_log_file = expand('~/Downloads/vim-lsp.log.txt')
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/Downloads/vim-lsp.log.txt')
 " let g:asyncomplete_log_file = expand('~/.vim.asyncomplete.log')
 
 " === FINAL VIMRC TASKS ===
