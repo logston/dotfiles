@@ -59,8 +59,6 @@ export GOPATH=$HOME/.go
 export PATH="$GOPATH/bin:$PATH"
 
 ### GIT
-export PATH="$HOME/Code/git:$PATH"
-
 alias gpoht='git push origin HEAD && git push origin --tags'
 alias gt='git tag'
 alias gdmh='git diff master HEAD'
