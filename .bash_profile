@@ -14,6 +14,20 @@ export FZF_DEFAULT_OPTS='--color light'
 ### Python
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
+### color less
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+
+### Turn on direnv
+eval "$(direnv hook zsh)"
+
+### Brew
+# Brew's PATH must be before pyenv in the PATH var otherwise pyenv's
+# shim logic will cause commands present in any unactive python version
+# to trigger a "this command is no available in this python version" error
+# rather than falling through to another library. OR the offending library
+# can be removed from the unactive python version.
+export PATH="$(brew --prefix)/bin:$PATH"
 
 #### Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -21,7 +35,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 #### Poetry
-
 export PATH="$HOME/.poetry/bin:$PATH"
 
 #### pipx
@@ -29,9 +42,6 @@ export PATH="$HOME/.local/bin:$PATH"
 autoload -U bashcompinit
 bashcompinit
 eval "$(register-python-argcomplete pipx)"
-
-### Brew
-export PATH="$(brew --prefix)/bin:$PATH"
 
 # Google SDK
 # The next line updates PATH for the Google Cloud SDK.
@@ -55,10 +65,11 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # GO
-export GOPATH=$HOME/.go
-export PATH="$GOPATH/bin:$PATH"
+export GOROOT=/usr/local/Cellar/go/1.14.5/libexec
 
 ### GIT
+export PATH="$HOME/.git-commands:$PATH"
+
 alias gpoht='git push origin HEAD && git push origin --tags'
 alias gt='git tag'
 alias gdmh='git diff master HEAD'

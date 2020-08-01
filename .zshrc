@@ -63,9 +63,42 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  alias-finder
+  ansible
   aws  # causes slow start of terminal
+  chucknorris
+  colored-man-pages
+  colorize
+  command-not-found
+  common-aliases
+  copybuffer
+  dash
+  dircycle
+  django
+  docker
+  docker-compose
+  emoji
+  fzf
+  gcloud
+  git
+  # git-prompt  # makes git repo operations very slow (~0.4s per op)
+  github
+  gitignore
+  golang
+  helm
+  jira
+  kubectl
+  pip
   poetry
+  ripgrep
+  rsync
+  sprunge
+  terraform
+  themes
+  timer
+  web-search
+  zsh-interactive-cd
+  zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh
