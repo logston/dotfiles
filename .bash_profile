@@ -10,6 +10,7 @@ export TERM=screen-256color
 
 # FZF
 export FZF_DEFAULT_OPTS='--color light'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 ### Python
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
@@ -66,6 +67,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # GO
 export GOROOT=/usr/local/Cellar/go/1.14.5/libexec
+export GOPATH="/Users/paul/Code/go:$GOPATH"
 
 ### GIT
 export PATH="$HOME/.git-commands:$PATH"
