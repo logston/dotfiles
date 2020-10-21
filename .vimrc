@@ -121,7 +121,11 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 map <C-p> :NERDTreeToggle<CR>
 
 " --- Highlights ---
+" Try :help cterm-colors for more colors
 highlight OverLength ctermbg=LightRed
+highlight LspErrorHighlight ctermbg=LightRed
+highlight LspWarningHighlight ctermbg=LightYellow
+highlight SpellBad ctermfg=Red ctermbg=White
 
 " --- GIT ---
 au FileType gitcommit setlocal spell
