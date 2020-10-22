@@ -1,22 +1,33 @@
 " === START vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
+Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/vim-lsp-settings'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vista.vim'
 Plug 'preservim/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'victorze/foo'
 Plug 'psf/black'
 Plug 'fisadev/vim-isort'
@@ -30,9 +41,8 @@ call plug#end()
 set hidden  " Allow buffer switching without saving
 set backspace=eol,start,indent       " set backspace
 set cursorline cursorcolumn          " show a visual line under the cursor's current line
-set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-set nowrap        " display long lines as just one line
-set number        " show line numbers
+" set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+set list listchars=tab:\ \ ,trail:⋅,nbsp:⋅
 set showmatch     " show the matching part of the pair for [] {} and ()
 set wildmenu      " used for command line completion
 set scrolloff=5   " determines the number of context lines you would like to see above and below the cursor
@@ -40,6 +50,10 @@ set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
 set fileformat=unix
 set showcmd
+set number
+set timeout
+set ttimeoutlen=0
+set nojoinspaces " Only insert one space between sentences when wrapping comments
 " set verbose=9
 " set verbosefile=~/vim.log
 
@@ -57,7 +71,7 @@ let g:lightline = {
 \   'active': {
 \     'left': [
 \         ['mode', 'paste'],
-\         ['readonly', 'filename', 'modified']
+\         ['readonly', 'filename', 'method']
 \     ],
 \     'right': [
 \         ['lineinfo'],
@@ -111,7 +125,6 @@ set tabstop=4
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
 " On pressing tab, insert spaces
-set expandtab
 "set smarttab
 " Default softtabstop to tabstop
 set softtabstop=0
@@ -120,17 +133,39 @@ set softtabstop=0
 let NERDTreeIgnore=['\.pyc$', '\~$']
 map <C-p> :NERDTreeToggle<CR>
 
+" --- Vista Tags ---
+let g:vista_default_executive = 'vim_lsp'
+nmap <leader>o  :Vista!!<CR>
+
 " --- Highlights ---
+" Try :help cterm-colors for more colors
 highlight OverLength ctermbg=LightRed
+highlight LspErrorHighlight ctermbg=LightRed
+highlight LspWarningHighlight ctermbg=LightYellow
+highlight SpellBad ctermfg=Red ctermbg=White
+
+nmap <leader>q  :bd<CR>
+nmap <leader>g  :GV<CR>
 
 " --- GIT ---
 au FileType gitcommit setlocal spell
 au Filetype gitcommit set textwidth=72
 au Filetype gitcommit set ruler
 
+" --- GOLANG ---
+au BufNewFile,BufRead *.go
+    \ set colorcolumn=101 |
+    \ match OverLength /\%101v.\+/
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>l <Plug>(go-lint) :<C-u>call go#lint#Golint(!g:go_jump_to_error)<CR> 
+autocmd FileType go nmap <leader>v <Plug>(go-vet) :<C-u>call go#lint#Vet(!g:go_jump_to_error)<CR>
+autocmd FileType go nmap <leader>d  <Plug>(go-doc-browser) :<C-u>call go#doc#OpenBrowser()<CR>
+
 " --- PYTHON ---
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
+    \ set expandtab |
     \ set shiftwidth=4 |
     \ set colorcolumn=101 |
     \ match OverLength /\%101v.\+/
