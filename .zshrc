@@ -89,7 +89,6 @@ plugins=(
   jira
   kubectl
   pip
-  poetry
   ripgrep
   rsync
   sprunge
