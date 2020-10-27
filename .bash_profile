@@ -66,8 +66,13 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # GO
-export GOROOT=/usr/local/Cellar/go/1.14.5/libexec
-export GOPATH="/Users/paul/Code/go:$GOPATH"
+export GOROOT=/usr/local/Cellar/go@1.14/1.14.8/libexec
+export GOPATH=/Users/paul/Code/go
+export PATH=${PATH}:${GOPATH}/bin/
+alias godoc='GO111MODULE=off godoc'
+
+# GPG
+export GPG_TTY=$(tty)
 
 ### GIT
 export PATH="$HOME/.git-commands:$PATH"
@@ -75,6 +80,8 @@ export PATH="$HOME/.git-commands:$PATH"
 alias gpoht='git push origin HEAD && git push origin --tags'
 alias gt='git tag'
 alias gdmh='git diff master HEAD'
+alias gupm='git fetch upstream && git pull upstream master && git push origin master'
+alias git-flush='git add . && git reset HEAD --hard'
 
 git-help() {
   echo "gt — git tag"
@@ -83,6 +90,7 @@ git-help() {
   echo "gpoht — git push origin HEAD && git push origin tag"
   echo "gdtag - git tag --delete <tag> && git push origin :refs/tags/<tag>"
   echo "gdmh - git diff master HEAD"
+  echo "gupm - git fetch upstream && git pull upstream master && git push origin master"
 }
 
 gdtag() {
@@ -94,26 +102,31 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
 export JRE_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home/jre
 fi
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+### JavaScript
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 ### Spark
 export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.4/libexec
 export PATH="/usr/local/Cellar/apache-spark/2.4.4/bin:$PATH"
 
+### Build Certs
+export PATH="/Users/paul/Code/certstrap:$PATH"
 
-### 15Five Functions
-set-sts-env() {
-    source /Users/paul/Code/15five/aws-cli-tooling/set-sts-env.sh
+### Tmux
+tmux-help() {
+  echo "Rename pane: select-pane -t 1 -T 'Test'"
+  echo "Show pane names: set pane-border-status"
 }
 
-set-deploy-env() {
-    source /Users/paul/Code/15five/aws-cli-tooling/set-deploy-env.sh
-}
+complete -o nospace -C /usr/local/bin/terraform terraform
 
-set-pg-env() {
-    source /Users/paul/Code/15five/aws-cli-tooling/set-pg-env.sh
-}
-# AWS_ROLE_NAME is used by our TG code
-export AWS_ROLE_NAME=FFAdministrator
+### Load machine specific ~/.bash_profile files
+mkdir -p ~/.bash.d
+source ~/.bash.d/*
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then

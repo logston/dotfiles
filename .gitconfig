@@ -17,3 +17,5 @@ email = paul.logston@gmail.com
 	clean = git-lfs clean -- %f
 [commit]
 	gpgsign = true
+[pull]
+	ff = only
