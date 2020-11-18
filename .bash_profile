@@ -16,8 +16,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 ### color less
+# Requires: brew install source-highlight
 export LESS='-R'
-export LESSOPEN='|~/.lessfilter %s'
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
 ### Turn on direnv
 eval "$(direnv hook zsh)"
@@ -66,7 +67,8 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # GO
-export GOROOT=/usr/local/Cellar/go@1.14/1.14.8/libexec
+# GOROOT set for vim-go / gopls
+export GOROOT=/usr/local/Cellar/go@1.14/1.14.11/libexec
 export GOPATH=/Users/paul/Code/go
 export PATH=${PATH}:${GOPATH}/bin/
 alias godoc='GO111MODULE=off godoc'

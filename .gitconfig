@@ -20,3 +20,5 @@ email = paul.logston@gmail.com
 	template = ~/.git_commit_message
 [pull]
 	ff = only
+[rerere]
+	enabled = true
