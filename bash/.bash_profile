@@ -8,6 +8,10 @@
 # Ensure all shells only allow 256 color
 export TERM=screen-256color
 
+# Append last command to history before returning prompt. This will save bash
+# history even if multiple bash sessions are in use.
+export PROMPT_COMMAND='history -a'
+
 # FZF
 export FZF_DEFAULT_OPTS='--color light'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
