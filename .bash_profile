@@ -68,7 +68,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # GO
 # GOROOT set for vim-go / gopls
-export GOROOT=/usr/local/Cellar/go@1.14/1.14.11/libexec
+export GOROOT=/usr/local/Cellar/go/1.15.6/libexec
 export GOPATH=/Users/paul/Code/go
 export PATH=${PATH}:${GOPATH}/bin/
 alias godoc='GO111MODULE=off godoc'
@@ -119,6 +119,12 @@ export PATH="/usr/local/Cellar/apache-spark/2.4.4/bin:$PATH"
 export PATH="/Users/paul/Code/certstrap:$PATH"
 
 ### Tmux
+if [ ! -f '/usr/local/bin/tmux' ]; then
+ln -s /Users/paul/Code/tmux/tmux /usr/local/bin/tmux
+fi
+if [ ! -f '/usr/local/bin/tmux-popup' ]; then
+ln -s /Users/paul/Code/tmux/tmux-popup /usr/local/bin/tmux-popup
+fi
 tmux-help() {
   echo "Rename pane: select-pane -t 1 -T 'Test'"
   echo "Show pane names: set pane-border-status"
@@ -128,6 +134,7 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 ### Load machine specific ~/.bash_profile files
 mkdir -p ~/.bash.d
+touch ~/.bash.d/init
 source ~/.bash.d/*
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then

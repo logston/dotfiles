@@ -29,7 +29,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'victorze/foo'
-Plug 'psf/black'
+Plug 'vim-scripts/mru.vim'
+"Plug 'psf/black'
 Plug 'fisadev/vim-isort'
 Plug '~/Code/vim/paul'
 
@@ -168,6 +169,7 @@ au BufNewFile,BufRead *.py
     \ set shiftwidth=4 |
     \ set colorcolumn=101 |
     \ match OverLength /\%101v.\+/
+
 
 nnoremap <Leader>i :%! isort --stdout %<CR><CR>
 
