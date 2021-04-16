@@ -97,6 +97,7 @@ plugins=(
   timer
   web-search
   zsh-interactive-cd
+  zsh-syntax-highlighting
   zsh_reload
 )
 

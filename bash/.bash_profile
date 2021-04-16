@@ -13,16 +13,16 @@ export TERM=screen-256color
 export PROMPT_COMMAND='history -a'
 
 # FZF
-export FZF_DEFAULT_OPTS='--color light'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+#export FZF_DEFAULT_OPTS='--color light'
+#export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 ### Python
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 ### color less
 # Requires: brew install source-highlight
-export LESS='-R'
-export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+# export LESS='-R'
+# export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
 ### Turn on direnv
 eval "$(direnv hook zsh)"
