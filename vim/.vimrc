@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
+Plug 'beautify-web/js-beautify'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -154,8 +155,8 @@ au Filetype gitcommit set ruler
 
 " --- GOLANG ---
 au BufNewFile,BufRead *.go
-    \ set colorcolumn=101 |
-    \ match OverLength /\%101v.\+/
+    \ set colorcolumn=121 |
+    \ match OverLength /\%121v.\+/
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>l <Plug>(go-lint) :<C-u>call go#lint#Golint(!g:go_jump_to_error)<CR> 
@@ -172,6 +173,8 @@ au BufNewFile,BufRead *.py
 
 
 nnoremap <Leader>i :%! isort --stdout %<CR><CR>
+nnoremap <Leader>w :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣ <CR>
+nnoremap <Leader>W :set listchars=<CR>
 
 " frontend
 au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
@@ -215,6 +218,8 @@ let g:lsp_diagnostics_echo_delay = 0
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/Downloads/vim-lsp.log.txt')
 " let g:asyncomplete_log_file = expand('~/.vim.asyncomplete.log')
+"
+let g:rg_binary = '/usr/local/bin/rg'
 
 " === FINAL VIMRC TASKS ===
 " allows for per-project configuration files

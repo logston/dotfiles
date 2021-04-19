@@ -24,8 +24,8 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared"
 # export LESS='-R'
 # export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
-### Turn on direnv
-eval "$(direnv hook zsh)"
+# ### Turn on direnv
+# eval "$(direnv hook zsh)"
 
 ### Brew
 # Brew's PATH must be before pyenv in the PATH var otherwise pyenv's
@@ -72,10 +72,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # GO
 # GOROOT set for vim-go / gopls
-export GOROOT=/usr/local/Cellar/go/1.15.6/libexec
+export GOROOT=/usr/local/Cellar/go@1.15/1.15.11/libexec
 export GOPATH=/Users/paul/Code/go
-export PATH=${PATH}:${GOPATH}/bin/
+export PATH=${PATH}:${GOPATH}/bin
 alias godoc='GO111MODULE=off godoc'
+
+export PATH=/Users/paul/.pulumi/bin/:${PATH}
 
 # GPG
 export GPG_TTY=$(tty)
@@ -86,7 +88,7 @@ export PATH="$HOME/.git-commands:$PATH"
 alias gpoht='git push origin HEAD && git push origin --tags'
 alias gt='git tag'
 alias gdmh='git diff master HEAD'
-alias gupm='git fetch upstream && git pull upstream master && git push origin master'
+alias gupm='git fetch upstream && git pull upstream master && git push origin master && git fetch'
 alias git-flush='git add . && git reset HEAD --hard'
 
 git-help() {

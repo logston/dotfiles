@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # Poetry
 fpath+=~/.zfunc
 
+fpath=($fpath ~/.zsh/completion)
+
 source $HOME/.bash_profile
 
 # User configuration

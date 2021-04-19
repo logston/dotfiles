@@ -2,3 +2,16 @@
 # Helpful Hints:
 # - Add this line to name a co-author in GitHub
 # Co-authored-by: name <name@example.com>
+#
+# https://chris.beams.io/posts/git-commit/
+# 1. Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# - Accelerate to 88 miles per hour
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+# - Clean your room
+# - Close the door
+# - Take out the trash
+# 6. Wrap the body at 72 characters
+# 7. Use the body to explain what and why vs. how
