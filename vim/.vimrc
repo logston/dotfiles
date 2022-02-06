@@ -18,9 +18,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
 
 " Search
-Plug 'jremmen/vim-ripgrep'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Multiple cursors (eg. ctrl+n)
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -101,9 +100,6 @@ set incsearch " incrementally highlight as search takes place
 nnoremap <C-f> :GFiles<CR>
 " String search
 nnoremap  <C-g> :exec 'Rg' expand('<cword>')<CR>
-" Configure ripgrep for use with vim-ripgrep.
-let g:rg_binary = '/usr/local/bin/rg'
-let g:rg_command = g:rg_binary . " --type-add 'vcr:**.vcr.yaml' --type-not vcr --type-add 'pb:**.pb.go' --type-not pb --vimgrep"
 
 " --- Tab completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -174,7 +170,7 @@ au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
 " complete.
 " Without this setting, language servers like gopls will cause Vim to freeze
 " when attempting to attempting to save due to blocking on LspDocumentFormatSync.
-let g:lsp_format_sync_timeout = 100
+let g:lsp_format_sync_timeout = 1000
 
 " --- Golang
 if executable('gopls')
