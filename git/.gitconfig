@@ -1,9 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-name = Paul Logston
-email = paul.logston@gmail.com
-	signingkey = 3D5749A33D6DDEF2
+	name = Paul Logston
+	email = logston@cockroachlabs.com
 [core]
 	excludesfile = ~/.gitignore_global
 [init]

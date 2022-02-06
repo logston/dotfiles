@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -63,52 +63,14 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  alias-finder
-  ansible
   aws  # causes slow start of terminal
-  chucknorris
-  colored-man-pages
-  colorize
-  command-not-found
-  common-aliases
-  copybuffer
-  dash
-  dircycle
-  django
-  docker
-  docker-compose
-  emoji
-  fzf
   gcloud
   git
-  # git-prompt  # makes git repo operations very slow (~0.4s per op)
-  github
-  gitignore
-  golang
-  helm
-  jira
-  kubectl
-  pip
-  ripgrep
-  rsync
-  sprunge
-  terraform
-  themes
-  timer
-  web-search
   zsh-interactive-cd
   zsh-syntax-highlighting
-  zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# Poetry
-fpath+=~/.zfunc
-
-fpath=($fpath ~/.zsh/completion)
-
-source $HOME/.bash_profile
 
 # User configuration
 
@@ -138,7 +100,16 @@ source $HOME/.bash_profile
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+### Load machine specific ~/.bash_profile files
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+### Brew
+# Brew's PATH must be before pyenv in the PATH var otherwise pyenv's
+# shim logic will cause commands present in any unactive python version
+# to trigger a "this command is no available in this python version" error
+# rather than falling through to another library. OR the offending library
+# can be removed from the unactive python version.
+export PATH="$(brew --prefix)/bin:$PATH"
 
-autoload -U +X bashcompinit && bashcompinit
+mkdir -p ~/.zsh.d
+touch ~/.zsh.d/00-init
+source <(cat ~/.zsh.d/*)
