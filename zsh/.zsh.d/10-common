@@ -1,0 +1,49 @@
+#!/bin/bash
+# Ensure all shells only allow 256 color
+export TERM=screen-256color
+
+# Append last command to history before returning prompt. This will save bash
+# history even if multiple bash sessions are in use.
+export PROMPT_COMMAND='history -a'
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+# GPG
+export GPG_TTY=$(tty)
+
+### GIT
+export PATH="$HOME/.git-commands:$PATH"
+
+alias gpoht='git push origin HEAD && git push origin --tags'
+alias gt='git tag'
+alias gdmh='git diff master HEAD'
+alias gupm='git fetch upstream && git pull upstream master && git push origin master && git fetch'
+alias git-flush='git add . && git reset HEAD --hard'
+
+git-help() {
+  echo "gt — git tag"
+  echo "gdct — git describe --tags 'git rev-list --tags --max-count=1'"
+  echo "gpoat — git push origin --all && git push origin --tags"
+  echo "gpoht — git push origin HEAD && git push origin tag"
+  echo "gdtag - git tag --delete <tag> && git push origin :refs/tags/<tag>"
+  echo "gdmh - git diff master HEAD"
+  echo "gupm - git fetch upstream && git pull upstream master && git push origin master"
+}
+
+#export PATH=${PATH}:/Users/paul/Code/paul-bin
+
+#### pipx
+export PATH="$HOME/.local/bin:$PATH"
+#autoload -U bashcompinit
+#bashcompinit
+#eval "$(register-python-argcomplete pipx)"
+
+### Tmux
+if [ ! -f '/usr/local/bin/tmux' ]; then
+  ln -s /Users/paul/Code/tmux/tmux /usr/local/bin/tmux
+fi
+tmux-help() {
+  echo "Rename pane: select-pane -t 1 -T 'Test'"
+  echo "Show pane names: set pane-border-status"
+}
