@@ -2,3 +2,4 @@
 .ctags-index
 .DS_Store
 .CFUserTextEncoding
+neovim/.config/nvim/undodir

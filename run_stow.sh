@@ -5,8 +5,8 @@ then
     brew install stow
 fi
 
-stow git
-stow pdbpp
-stow tmux
-stow vim
 stow zsh
+stow tmux
+stow git
+stow neovim
+stow pdbpp
