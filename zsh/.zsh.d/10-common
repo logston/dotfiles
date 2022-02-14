@@ -2,6 +2,9 @@
 # Ensure all shells only allow 256 color
 export TERM=screen-256color
 
+# Install fzf triggers
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Append last command to history before returning prompt. This will save bash
 # history even if multiple bash sessions are in use.
 export PROMPT_COMMAND='history -a'
@@ -31,8 +34,6 @@ git-help() {
   echo "gupm - git fetch upstream && git pull upstream master && git push origin master"
 }
 
-#export PATH=${PATH}:/Users/paul/Code/paul-bin
-
 #### pipx
 export PATH="$HOME/.local/bin:$PATH"
 #autoload -U bashcompinit
@@ -43,6 +44,7 @@ export PATH="$HOME/.local/bin:$PATH"
 if [ ! -f '/usr/local/bin/tmux' ]; then
   ln -s /Users/paul/Code/tmux/tmux /usr/local/bin/tmux
 fi
+
 tmux-help() {
   echo "Rename pane: select-pane -t 1 -T 'Test'"
   echo "Show pane names: set pane-border-status"
