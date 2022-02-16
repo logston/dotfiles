@@ -79,7 +79,11 @@ noremap <C-k>    :bp<CR>
 noremap <C-l>    :bn<CR>
 noremap <C-w>    <C-w>w
 nmap <leader>q  :bd<CR>
+nmap <leader>qq  :q<CR>
 nmap <leader>s  :wa<CR>
+nmap <leader>m  :Marks<CR>
+nmap <leader>h  :History<CR>
+nmap <leader>bc :BCommits<CR>
 " disable ctags
 nnoremap <C-]> <nop>
 
