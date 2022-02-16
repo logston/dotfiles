@@ -1,4 +1,5 @@
 {
+  "diagnostic.checkCurrentLine": true,
   "languageserver": {
     "golang": {
       "command": "gopls",

@@ -26,10 +26,10 @@ Plug '~/Code/vim/paul'
 " Initialize plugin system
 call plug#end()
 
-set background=light
-"colorscheme one
 
 " === GENERAL ===
+set background=light
+highlight SignColumn ctermbg=None
 set hidden  " Allow buffer switching without saving
 set backspace=eol,start,indent       " set backspace
 set cursorline cursorcolumn          " show a visual line under the cursor's current line
@@ -46,6 +46,7 @@ set timeout
 set ttimeoutlen=0
 set nojoinspaces " Only insert one space between sentences when wrapping comments
 set mouse-=a
+set signcolumn=yes " Show gutter (ie. git-gutter) at all times.
 
 " --- Tabs and Spaces
 " Continue indentation of the current line to the next
@@ -76,7 +77,6 @@ noremap <Right>  <NOP>
 " buffer control
 noremap <C-k>    :bp<CR>
 noremap <C-l>    :bn<CR>
-noremap <C-8>    :bd<CR>
 noremap <C-w>    <C-w>w
 nmap <leader>q  :bd<CR>
 nmap <leader>s  :wa<CR>
