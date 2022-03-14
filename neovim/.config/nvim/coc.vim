@@ -2,6 +2,8 @@
 set nobackup
 set nowritebackup
 
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-sh']
+
 set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
