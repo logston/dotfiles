@@ -16,6 +16,13 @@ export EDITOR="$VISUAL"
 # For signing git commits.
 export GPG_TTY=$(tty)
 
+# PyEnv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=0
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
 ### GIT
 export PATH="$HOME/.git-commands:$PATH"
 
