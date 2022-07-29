@@ -58,7 +58,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # Add pyenv autocompletion
 eval "$(pyenv init -)"
 # Add pyenv virtualenv autocompletion to path
-eval "$(pyenv virtualenv-init -)"
+# This can really slow down CLI prompt
+# eval "$(pyenv virtualenv-init -)"
 
 ### pipx
 # First install pipx. Then install argcomplete
