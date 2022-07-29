@@ -57,6 +57,7 @@ set ttimeoutlen=0
 set nojoinspaces " Only insert one space between sentences when wrapping comments
 set mouse-=a
 set signcolumn=yes " Show gutter (ie. git-gutter) at all times.
+set listchars=tab:»\ ,eol:↲,nbsp:␣
 
 " --- Tabs and Spaces
 " Continue indentation of the current line to the next
@@ -94,6 +95,8 @@ nmap <leader>s  :wa<CR>
 nmap <leader>m  :Marks<CR>
 nmap <leader>h  :History<CR>
 nmap <leader>bc :BCommits<CR>
+nmap <leader>w :set list<CR>
+nmap <leader>W :set nolist<CR>
 " disable ctags
 nnoremap <C-]> <nop>
 

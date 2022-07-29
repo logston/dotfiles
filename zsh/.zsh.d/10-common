@@ -25,8 +25,20 @@ export PATH="$HOME/.git-commands:$PATH"
 alias gpoht='git push origin HEAD && git push origin --tags'
 alias gt='git tag'
 alias gdmh='git diff master HEAD'
-alias gupm='git fetch upstream && git pull upstream master && git push origin master && git fetch'
 alias git-flush='git add . && git reset HEAD --hard'
+
+function gupm() {
+	branch=$(git branch --show-current)
+	if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+		git fetch upstream
+		git pull upstream $branch
+		git push origin $branch
+		git fetch
+	else
+		echo "Can not gupm while on $branch"
+	fi
+}
+
 
 git-help() {
   echo "gt — git tag"
@@ -43,8 +55,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=0
 # Add pyenv to path
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-# Add pyenv shims to path
-eval "$(pyenv init --path)"
 # Add pyenv autocompletion
 eval "$(pyenv init -)"
 # Add pyenv virtualenv autocompletion to path
