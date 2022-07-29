@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # to trigger a "this command is no available in this python version" error
 # rather than falling through to another library. OR the offending library
 # can be removed from the unactive python version.
+export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 
 mkdir -p ~/.zsh.d

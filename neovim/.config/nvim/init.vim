@@ -21,13 +21,23 @@ Plug 'tpope/vim-fugitive'
 " Sweet git viewing (eg. \gv). Requires fugitive.
 Plug 'junegunn/gv.vim'
 
+" C/C++ syntax highlighting and formatting
+"Plug 'bfrg/vim-cpp-modern'
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'rhysd/vim-clang-format'
+
+" " Golang
+" " CRL
+" Plug 'irfansharif/vim-crlfmt'
+
 Plug '~/Code/vim/paul'
 
 " Initialize plugin system
 call plug#end()
 
-
 " === GENERAL ===
+set t_Co=256
+colorscheme default
 set background=light
 highlight SignColumn ctermbg=None
 set hidden  " Allow buffer switching without saving
@@ -137,6 +147,13 @@ au Filetype gitcommit set ruler
 " Git control
 nmap <leader>gv  :GV<CR>
 nmap <leader>gb  :Git blame<CR>
+
+" --- C/C++
+" c++ syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
 
 " --- Golang
 au BufNewFile,BufRead *.go
