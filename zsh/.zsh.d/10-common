@@ -64,7 +64,11 @@ eval "$(pyenv init -)"
 ### pipx
 # First install pipx. Then install argcomplete
 # to get arg completion.
-eval "$(register-python-argcomplete pipx)"
+if command -v register-python-argcomplete &> /dev/null
+then
+	eval "$(register-python-argcomplete pipx)"
+fi
+
 
 ### Golang
 export GOPATH="$HOME/Code/go"
@@ -76,10 +80,15 @@ if [ -f "$HOME/Code/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Code/google-
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/Code/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Code/google-cloud-sdk/completion.zsh.inc"; fi
 
+### Node/JS
+export NVM_DIR="$HOME/.nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 ### Tmux
-if [ ! -f '/usr/local/bin/tmux' ]; then
-  ln -s "$HOME/Code/tmux/tmux" /usr/local/bin/tmux
-fi
+# if [ ! -f '/usr/local/bin/tmux' ]; then
+#   ln -s "$HOME/Code/tmux/tmux" /usr/local/bin/tmux
+# fi
 
 tmux-help() {
   echo "Rename pane: select-pane -t 1 -T 'Test'"

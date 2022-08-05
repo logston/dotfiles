@@ -6,4 +6,6 @@ fi
 
 cd ~/.dotfiles
 
-./run_stow.sh
+brew bundle --verbose --file Brewfile
+
+./stow.sh

@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell" 
+ZSH_THEME="fino-time" 
 #ZSH_THEME="spaceship" 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -67,7 +67,6 @@ plugins=(
   gcloud
   git
   zsh-interactive-cd
-  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -109,7 +108,20 @@ source $ZSH/oh-my-zsh.sh
 # rather than falling through to another library. OR the offending library
 # can be removed from the unactive python version.
 export HOMEBREW_NO_AUTO_UPDATE=1
-export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+# Assume that if we find linuxbrew bin dir, that we are running on Linux and we
+# should "shellenv".
+if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then 
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+if [ -z "$HOMEBREW_PREFIX" ]; then
+    export HOMEBREW_PREFIX=$(brew --prefix)
+fi
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+
+# ZSH
+if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then 
+	source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
 
 mkdir -p ~/.zsh.d
 touch ~/.zsh.d/00-init

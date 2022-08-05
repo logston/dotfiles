@@ -1,0 +1,10 @@
+#!/bin/sh
+
+HOSTNAME=$(hostname)
+HOSTCONFIG="$HOME/.zsh.d/9999-$HOSTNAME"
+
+if [ ! -f "$HOSTCONFIG" ]; then
+	echo "Hi! It looks like you are on a new machine because I didn't find a host config file at $HOSTCONFIG"
+	echo "If this is a new machine, please check out https://github.com/logston/dotfiles for bootstrapping info."
+	echo "If this is an old machine and you want to ignore this message, run \"touch $HOSTCONFIG\""
+fi
