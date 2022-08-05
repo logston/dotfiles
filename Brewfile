@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/core"
 brew "bazelisk"
 brew "fzf"
+brew "git"
 brew "go@1.17", link: true
 brew "jq"
 brew "neovim"

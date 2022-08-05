@@ -18,7 +18,7 @@ Then running the setup script above should install the rest.
 #### Git GPG Keys
 
 In order to sign Git commits, you'll need to create a GPG key and add these env
-vars to your machine specific ~/.zsh.d/ file. 
+vars to your machine specific `~/.zsh.d/` file. 
 
 ```
 gpg --full-generate-key
@@ -48,6 +48,8 @@ export GIT_CONFIG_VALUE_0=paul@...
 export GIT_CONFIG_KEY_1=user.signingkey
 export GIT_CONFIG_VALUE_1=ABC1233456
 ```
+
+Make sure you have git >= 2.37: `git --version`
 
 ### Tmux
 #### MacOS
