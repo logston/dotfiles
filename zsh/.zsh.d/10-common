@@ -13,7 +13,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ### FZF
 # Install fzf triggers
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 ### GPG
 # For signing git commits.
@@ -31,8 +31,8 @@ function gupm() {
 	branch=$(git branch --show-current)
 	if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
 		git fetch upstream
-		git pull upstream $branch
-		git push origin $branch
+		git pull upstream "$branch"
+		git push origin "$branch"
 		git fetch
 	else
 		echo "Can not gupm while on $branch"
