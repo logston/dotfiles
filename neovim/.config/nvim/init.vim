@@ -177,3 +177,4 @@ au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set shiftwidth=2
 
 source ~/.config/nvim/coc.vim
+source ~/.config/nvim/coc-custom.vim
