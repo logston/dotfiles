@@ -6,6 +6,8 @@ fi
 
 cd ~/.dotfiles
 
+touch ~/.dotfiles/tmux/.tmux.local.conf
+
 brew bundle --verbose --file Brewfile
 
 ./stow.sh
