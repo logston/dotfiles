@@ -15,6 +15,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ### GPG
 # For signing git commits.
+# If you need a new GPG key:
+#   gpg --full-generate-key
+#   gpg --list-secret-keys --keyid-format=long
+#   gpg --armor --export .....
 export GPG_TTY=$(tty)
 
 ### GIT
