@@ -11,6 +11,7 @@
 When setting up a new machine, first get few basics installed:
 
 - Oh-my-zsh (and potentially zsh): https://ohmyz.sh/#install
+- Tmux Plugin Manager: https://github.com/tmux-plugins/tpm
 - brew: https://brew.sh/
 
 Then running the setup script above should install the rest. 
