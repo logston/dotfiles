@@ -6,7 +6,9 @@ fi
 
 cd ~/.dotfiles
 
-touch ~/.dotfiles/tmux/.tmux.local.conf
+if [ ! -f ~/.dotfiles/tmux/.tmux.local.conf ]; then
+	echo "new-session -s Default" > ~/.dotfiles/tmux/.tmux.local.conf
+fi
 
 brew bundle --verbose --file Brewfile
 
