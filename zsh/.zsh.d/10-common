@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # CORE
-# Ensure all shells only allow 256 color
-export TERM=screen-256color
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 # Append last command to history before returning prompt. This will save bash

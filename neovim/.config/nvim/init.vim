@@ -35,11 +35,11 @@ Plug '~/Code/vim/paul'
 " Initialize plugin system
 call plug#end()
 
+" Load CoC
+source ~/.config/nvim/coc.vim
+source ~/.config/nvim/coc-custom.vim
+
 " === GENERAL ===
-set t_Co=256
-colorscheme default
-set background=light
-highlight SignColumn ctermbg=None
 set hidden  " Allow buffer switching without saving
 set backspace=eol,start,indent       " set backspace
 set cursorline cursorcolumn          " show a visual line under the cursor's current line
@@ -97,7 +97,6 @@ nmap <leader>h  :History<CR>
 nmap <leader>bc :BCommits<CR>
 nmap <leader>w :set list<CR>
 nmap <leader>W :set nolist<CR>
-" disable ctags
 nnoremap <C-]> <nop>
 
 " --- Search
@@ -110,12 +109,39 @@ nnoremap  <C-g> :exec 'Rg' expand('<cword>')<CR>
 " Show FZF window with preview at top and taking up 80% of the preview window.
 let g:fzf_preview_window = ['up:80%']
 
-" --- Highlights
-" Try :help cterm-colors for more colors
-highlight OverLength ctermbg=LightRed
-highlight LspErrorHighlight ctermbg=LightRed
-highlight LspWarningHighlight ctermbg=LightYellow
-highlight SpellBad ctermfg=Red ctermbg=White
+" --- Colors and Highlights
+" ctermxx is used by console version of Vim (ie. when notermguicolors is set). guixx
+" is used in GVim, or in console if termguicolors is set, and the console is
+" capable of TrueColor.
+" https://www.ditig.com/256-colors-cheat-sheet
+"
+" termguicolors Enables 24-bit RGB color in the |TUI|.  Uses "gui" |:highlight|
+" attributes instead of "cterm" attributes. |highlight-guifg|
+" Requires an ISO-8613-3 compatible terminal.
+set notermguicolors " turned off, less is more
+
+" colorscheme should set or return g:color_name (or default if g:color_name is
+" empty). It is set specifically to "default" here (ie. a noop) to clear the
+" slate for future color changes.
+colorscheme default
+" background is set to light as a safe default in the event colors load
+" incorrectly.
+set background=light
+" Use :highlight to see current settings.
+" - Built-ins
+highlight OverLength                      ctermbg=203
+highlight SignColumn                      ctermbg=None
+highlight SpellBad            ctermfg=9   ctermbg=15
+" Popup menu: selected item.
+highlight PmenuSel            ctermfg=255 ctermbg=54
+" Popup menu: selected item.
+highlight PmenuThumb          ctermfg=255 ctermbg=54
+" - Plugin Specific
+highlight LspErrorHighlight               ctermbg=203
+highlight LspWarningHighlight             ctermbg=229
+highlight link CocMenuSel                  PmenuSel
+highlight link CocUnusedHighlight          Error
+highlight link FgCocHintFloatBgCocFloating Pmenu
 
 " --- Status line and Lightline
 set laststatus=2  " display the status line always
@@ -176,5 +202,3 @@ au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set tabstop=2 |
     \ set shiftwidth=2
 
-source ~/.config/nvim/coc.vim
-source ~/.config/nvim/coc-custom.vim
