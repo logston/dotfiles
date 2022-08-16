@@ -6,6 +6,7 @@
 	signingkey = 3D5749A33D6DDEF2
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = nvim
 [init]
 	templateDir = ~/.git-template
 	defaultBranch = main
