@@ -4,7 +4,7 @@ tap "homebrew/core"
 brew "bazelisk"
 brew "fzf"
 brew "git"
-brew "go@1.17", link: true
+brew "go@1.19", link: true
 brew "jq"
 brew "neovim"
 brew "node"

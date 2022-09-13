@@ -9,6 +9,8 @@ export PROMPT_COMMAND='history -a'
 # Add custom binaries to path
 export PATH="$HOME/.local/bin:$PATH"
 
+alias env='env | sort'
+
 ### FZF
 # Install fzf triggers
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
@@ -29,7 +31,8 @@ alias gt='git tag'
 alias gdmh='git diff master HEAD'
 alias git-flush='git add . && git reset HEAD --hard'
 
-function gupm() {
+
+function gupm-inner() {
 	branch=$(git branch --show-current)
 	if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
 		git fetch upstream
@@ -38,6 +41,15 @@ function gupm() {
 		git fetch
 	else
 		echo "Can not gupm while on $branch"
+	fi
+}
+
+function gupm() {
+	stat .git/refs/remotes/upstream &> /dev/null
+	if [ $? ]; then
+		gupm-inner
+	else
+		git fetch
 	fi
 }
 
@@ -84,6 +96,11 @@ if [ -f "$HOME/Code/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Code/google-
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/Code/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Code/google-cloud-sdk/completion.zsh.inc"; fi
 
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+if [ ! -f "/usr/local/bin/gke-gcloud-auth-plugin" ]; then
+   ln -s $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/gke-gcloud-auth-plugin /usr/local/bin/gke-gcloud-auth-plugin;
+fi
+
 ### Node/JS
 export NVM_DIR="$HOME/.nvm"
 [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
@@ -93,6 +110,10 @@ export NVM_DIR="$HOME/.nvm"
 # if [ ! -f '/usr/local/bin/tmux' ]; then
 #   ln -s "$HOME/Code/tmux/tmux" /usr/local/bin/tmux
 # fi
+
+if [[ -n "$TMUX_PANE" ]]; then
+    export TMUX_SESSION=$(tmux list-panes -t "$TMUX_PANE" -F '#S' | head -n1)
+fi
 
 tmux-help() {
   echo "Rename pane: select-pane -t 1 -T 'Test'"
