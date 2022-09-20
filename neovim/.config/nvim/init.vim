@@ -188,6 +188,8 @@ let g:cpp_posix_standard = 1
 au BufNewFile,BufRead *.go
     \ set colorcolumn=121 |
     \ match OverLength /\%121v.\+/
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go :Format
 
 " --- Python
 au BufNewFile,BufRead *.py
