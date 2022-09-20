@@ -70,7 +70,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=0
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # Add shims to PATH
-eval "$(pyenv init --path)"
 # Add pyenv autocompletion
 eval "$(pyenv init -)"
 # Add pyenv virtualenv autocompletion to path
