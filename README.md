@@ -55,7 +55,7 @@ Make sure you have git >= 2.37: `git --version`
 ### Tmux
 #### MacOS
 
-Set the command for terminal to run upon opening to: `/usr/local/bin/tmux attach-session`
+Set the command for terminal to run upon opening to: `/usr/local/bin/tmux new -A -s Default`
 
 #### Linux
 
