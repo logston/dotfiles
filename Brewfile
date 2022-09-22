@@ -5,7 +5,7 @@ brew "awscli"
 brew "bazelisk"
 brew "fzf"
 brew "git"
-brew "go@1.19", link: true
+brew "go@1.18", link: true
 brew "openjdk@18"
 brew "jq"
 brew "maven@3.8"
