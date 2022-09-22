@@ -1,6 +1,12 @@
 {
   "diagnostic.checkCurrentLine": true,
   "python.linting.flake8Enabled": true,
+  "prettier.resolveGlobalModules": true,
+  "prettier.tabWidth": 3,
+  "prettier.prettierPath": "/usr/local/lib/node_modules/prettier",
+  "prettier.printWidth": 80,
+  "prettier.bracketSpacing": false,
+  "coc.preferences.formatOnSaveFiletypes": ["java"],
   "languageserver": {
     "golang": {
       "command": "gopls",

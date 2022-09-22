@@ -199,6 +199,14 @@ au BufNewFile,BufRead *.py
     \ set colorcolumn=101 |
     \ match OverLength /\%101v.\+/
 
+" --- Java
+au BufNewFile,BufRead *.java
+    \ set tabstop=3 |
+    \ set expandtab |
+    \ set shiftwidth=3 |
+    \ set colorcolumn=81 |
+    \ match OverLength /\%81v.\+/
+
 " --- Frontend
 au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set tabstop=2 |
