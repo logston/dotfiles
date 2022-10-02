@@ -11,10 +11,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ruanyl/vim-gh-line'
 
+" Code Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Comment out stuff (eg. gcc)
 Plug 'tpope/vim-commentary'
+
+" Code cleaning
+Plug 'ntpeters/vim-better-whitespace'
 
 " Git stuffs (eg. :Gblame)
 Plug 'tpope/vim-fugitive'
@@ -72,6 +76,10 @@ set shiftwidth=4
 "set smarttab
 " Default softtabstop to tabstop
 set softtabstop=0
+
+" Remove trailing whitespace on save.
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
 
 " --- Spelling
 set spell
