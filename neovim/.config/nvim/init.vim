@@ -35,6 +35,7 @@ Plug 'junegunn/gv.vim'
 " Plug 'irfansharif/vim-crlfmt'
 
 Plug '~/Code/vim/paul'
+Plug 'logston/do-not-save'
 
 " Initialize plugin system
 call plug#end()
@@ -208,6 +209,8 @@ au BufNewFile,BufRead *.py
     \ match OverLength /\%101v.\+/
 
 " --- Java
+" https://vimdoc.sourceforge.net/htmldoc/change.html#formatting \ set
+" formatoptions+=a |
 au BufNewFile,BufRead *.java
     \ set tabstop=3 |
     \ set expandtab |

@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
     \ 'coc-sh',
     \ 'coc-tsserver',
     \ 'coc-java',
+    \ 'coc-xml',
     \ ]
 
 set cmdheight=1
