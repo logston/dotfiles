@@ -8,4 +8,9 @@ let g:coc_global_extensions = [
     \ 'coc-xml',
     \ ]
 
+" Terraform
+" https://github.com/hashicorp/terraform-ls
+" No coc-extension exists for Terraform. The language server must be installed
+" and coc-settings configured to use it. 
+
 set cmdheight=1
