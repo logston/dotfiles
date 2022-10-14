@@ -25,15 +25,6 @@ Plug 'tpope/vim-fugitive'
 " Sweet git viewing (eg. \gv). Requires fugitive.
 Plug 'junegunn/gv.vim'
 
-" C/C++ syntax highlighting and formatting
-"Plug 'bfrg/vim-cpp-modern'
-" Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'rhysd/vim-clang-format'
-
-" " Golang
-" " CRL
-" Plug 'irfansharif/vim-crlfmt'
-
 Plug '~/Code/vim/paul'
 Plug 'logston/do-not-save'
 
