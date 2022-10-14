@@ -54,6 +54,7 @@ set nojoinspaces " Only insert one space between sentences when wrapping comment
 set mouse-=a
 set signcolumn=yes " Show gutter (ie. git-gutter) at all times.
 set listchars=tab:»\ ,eol:↲,nbsp:␣
+set expandtab " Always expand tab to spaces. Override for files like Makefile.
 
 " --- Tabs and Spaces
 " Continue indentation of the current line to the next
@@ -185,16 +186,18 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_posix_standard = 1
 
 " --- Golang
-au BufNewFile,BufRead *.go
+autocmd BufNewFile,BufRead *.go
     \ set colorcolumn=121 |
     \ match OverLength /\%121v.\+/
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 autocmd BufWritePre *.go :Format
 
+autocmd BufNewFile,BufRead Makefile
+    \ set noexpandtab
+
 " --- Python
-au BufNewFile,BufRead *.py
+autocmd BufNewFile,BufRead *.py
     \ set tabstop=4 |
-    \ set expandtab |
     \ set shiftwidth=4 |
     \ set colorcolumn=101 |
     \ match OverLength /\%101v.\+/
@@ -202,15 +205,13 @@ au BufNewFile,BufRead *.py
 " --- Java
 " https://vimdoc.sourceforge.net/htmldoc/change.html#formatting \ set
 " formatoptions+=a |
-au BufNewFile,BufRead *.java
+autocmd BufNewFile,BufRead *.java
     \ set tabstop=3 |
-    \ set expandtab |
     \ set shiftwidth=3 |
     \ set colorcolumn=81 |
     \ match OverLength /\%81v.\+/
 
 " --- Frontend
-au BufNewFile,BufRead *.js,*.jsx,*.html,*.css
+autocmd BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set tabstop=2 |
     \ set shiftwidth=2
-
