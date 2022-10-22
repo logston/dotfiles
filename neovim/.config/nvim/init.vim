@@ -33,7 +33,7 @@ call plug#end()
 
 " Load CoC
 source ~/.config/nvim/coc.vim
-source ~/.config/nvim/coc-custom.vim
+source ~/.config/nvim/coc-extensions.vim
 
 " === GENERAL ===
 set hidden  " Allow buffer switching without saving
