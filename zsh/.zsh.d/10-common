@@ -110,13 +110,8 @@ export NVM_DIR="$HOME/.nvm"
 # "prettier.prettierPath": "/usr/local/lib/node_modules/prettier",
 
 ### Java
-export PATH="/usr/local/opt/openjdk@18/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 #export MAVEN_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"
-
-### Tmux
-# if [ ! -f '/usr/local/bin/tmux' ]; then
-#   ln -s "$HOME/Code/tmux/tmux" /usr/local/bin/tmux
-# fi
 
 if [[ -n "$TMUX_PANE" ]]; then
     export TMUX_SESSION=$(tmux list-panes -t "$TMUX_PANE" -F '#S' | head -n1)

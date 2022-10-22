@@ -18,11 +18,12 @@ brew "helmfile"
 brew "jq"
 brew "k9s"
 brew "kubernetes-cli"
+brew "maven"
 brew "neovim"
 brew "netcat"
 brew "nmap"
-# NPM is needed by nvim.
-brew "npm"
+# Node is needed by nvim.
+# nvm install <latest lts>
 brew "nvm"
 brew "openjdk"
 brew "pipx"
@@ -40,3 +41,6 @@ brew "zsh-syntax-highlighting"
 
 cask "google-cloud-sdk"
 cask "hammerspoon"
+cask "basictex"
+# sudo tlmgr update --self
+# sudo tlmgr install xelatex
