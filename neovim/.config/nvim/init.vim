@@ -51,7 +51,8 @@ set number
 set timeout
 set ttimeoutlen=0
 set nojoinspaces " Only insert one space between sentences when wrapping comments
-set mouse-=a
+" No mouse integration with neovim. Just causes issues.
+set mouse=
 set signcolumn=yes " Show gutter (ie. git-gutter) at all times.
 set listchars=tab:»\ ,eol:↲,nbsp:␣
 set expandtab " Always expand tab to spaces. Override for files like Makefile.
