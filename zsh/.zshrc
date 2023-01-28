@@ -12,7 +12,7 @@ cp $HOME/.dotfiles/zsh-themes/*.zsh-theme $ZSH/themes/
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="puerto-fino-time"
-#ZSH_THEME="spaceship" 
+#ZSH_THEME="spaceship"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -113,16 +113,17 @@ source $ZSH/oh-my-zsh.sh
 export HOMEBREW_NO_AUTO_UPDATE=1
 # Assume that if we find linuxbrew bin dir, that we are running on Linux and we
 # should "shellenv".
-if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then 
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if [ -f "/home/" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+else
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-if [ -z "$HOMEBREW_PREFIX" ]; then
-    export HOMEBREW_PREFIX=$(brew --prefix)
-fi
+
 export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
 
 # ZSH
-if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then 
+if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
 	source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 

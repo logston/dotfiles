@@ -6,10 +6,10 @@ export EDITOR="$VISUAL"
 # Append last command to history before returning prompt. This will save bash
 # history even if multiple bash sessions are in use.
 export PROMPT_COMMAND='history -a'
-# Add custom binaries to path
-export PATH="$HOME/.local/bin:$PATH"
 
-alias env='env | sort'
+env() {
+    /usr/bin/env | sort
+}
 
 ### FZF
 # Install fzf triggers
@@ -30,7 +30,6 @@ alias gpoht='git push origin HEAD && git push origin --tags'
 alias gt='git tag'
 alias gdmh='git diff master HEAD'
 alias git-flush='git add . && git reset HEAD --hard'
-
 
 function gupm-inner() {
 	branch=$(git branch --show-current)
@@ -83,16 +82,17 @@ if command -v register-python-argcomplete &> /dev/null
 then
 	eval "$(register-python-argcomplete pipx)"
 fi
+export PATH="$HOME/.local/bin:$PATH"
 
 ### Golang
 export GOPATH="$HOME/Code/go"
 export PATH="$GOPATH/bin:$PATH"
+alias godoc='GO111MODULE=off godoc'
 
 ### gcloud
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then . "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"; fi
 # The next line enables shell command completion for gcloud.
-if [ -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then . "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"; fi
 
 ### Node/JS
 export NVM_DIR="$HOME/.nvm"
