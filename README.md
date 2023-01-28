@@ -56,9 +56,16 @@ Make sure you have git >= 2.37: `git --version`
 ### Tmux
 #### MacOS
 
-Set the command for terminal to run upon opening to: `/usr/local/bin/tmux new -A -s Default`
+Set the command for terminal to run upon opening to: `/opt/homebrew/bin/tmux new -A -s Default`
+
+Ensure "Option" key works as Meta: `Terminal > Settings > Profiles > Keyboard > Use Option as Meta`.
 
 #### Linux
 
 Run `tmux attach-session -t Default` after shelling in.
+
+### Neovim
+
+- Install Vim-plug: https://github.com/junegunn/vim-plug
+- Install nvm for node and Coc: `nvm install v18.13.0`
 
