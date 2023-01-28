@@ -11,8 +11,9 @@
 When setting up a new machine, first get few basics installed:
 
 - Oh-my-zsh (and potentially zsh): https://ohmyz.sh/#install
-- Tmux Plugin Manager: https://github.com/tmux-plugins/tpm
 - brew: https://brew.sh/
+- ./setup.sh from above
+- Tmux Plugin Manager: https://github.com/tmux-plugins/tpm
 
 Then running the setup script above should install the rest. 
 
@@ -38,7 +39,7 @@ Please specify how long the key should be valid.
       <n>w = key expires in n weeks
       <n>m = key expires in n months
       <n>y = key expires in n years
-Key is valid for? (0) 1
+Key is valid for? (0)
 ...
 ```
 

@@ -10,6 +10,8 @@ if [ ! -f ~/.dotfiles/tmux/.tmux.local.conf ]; then
 	echo "new-session -s Default" > ~/.dotfiles/tmux/.tmux.local.conf
 fi
 
-brew bundle --verbose --file Brewfile
+brew install stow
 
 ./stow.sh
+
+brew bundle --verbose --file Brewfile
