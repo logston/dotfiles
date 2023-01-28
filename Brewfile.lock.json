@@ -1458,6 +1458,24 @@
         "options": {
           "full_name": "basictex"
         }
+      },
+      "1password": {
+        "version": "8.9.13",
+        "options": {
+          "full_name": "1password"
+        }
+      },
+      "keybase": {
+        "version": "6.0.4,20230113195947,6e1343b357",
+        "options": {
+          "full_name": "keybase"
+        }
+      },
+      "1password-cli": {
+        "version": "2.13.1",
+        "options": {
+          "full_name": "1password/tap/1password-cli"
+        }
       }
     }
   },

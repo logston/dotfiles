@@ -69,3 +69,9 @@ Run `tmux attach-session -t Default` after shelling in.
 - Install Vim-plug: https://github.com/junegunn/vim-plug
 - Install nvm for node and Coc: `nvm install v18.13.0`
 
+### LaTex
+
+```
+sudo tlmgr update --self
+sudo tlmgr install xelatex
+```

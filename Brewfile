@@ -42,5 +42,6 @@ brew "zsh-syntax-highlighting"
 cask "google-cloud-sdk"
 cask "hammerspoon"
 cask "basictex"
-# sudo tlmgr update --self
-# sudo tlmgr install xelatex
+cask "keybase"
+cask "1password"
+cask "1password/tap/1password-cli"
