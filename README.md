@@ -44,11 +44,15 @@ Key is valid for? (0)
 ```
 
 ```
-export GIT_CONFIG_COUNT=2
-export GIT_CONFIG_KEY_0=user.email 
-export GIT_CONFIG_VALUE_0=paul@...
-export GIT_CONFIG_KEY_1=user.signingkey
-export GIT_CONFIG_VALUE_1=ABC1233456
+# Override .gitconfig values with machine-specific values
+export GIT_CONFIG_COUNT=3
+export GIT_CONFIG_KEY_0=user.name
+export GIT_CONFIG_VALUE_0="Paul Logston"
+export GIT_CONFIG_KEY_1=user.email
+export GIT_CONFIG_VALUE_1=paul.logston@
+export GIT_CONFIG_KEY_2=user.signingkey
+# gpg --list-keys --keyid-format LONG, use signing key with !
+export GIT_CONFIG_VALUE_2=1AB00E2439AB1403!
 ```
 
 Make sure you have git >= 2.37: `git --version`
@@ -74,4 +78,7 @@ Run `tmux attach-session -t Default` after shelling in.
 ```
 sudo tlmgr update --self
 sudo tlmgr install xelatex
+sudo tlmgr install algorithms
+sudo tlmgr install algorithmicx
+sudo tlmgr install titlesec
 ```

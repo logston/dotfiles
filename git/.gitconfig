@@ -1,9 +1,5 @@
 # This is Git's per-user configuration file.
-[user]
-# Please adapt and uncomment the following lines:
-	name = Paul Logston
-	email = paul.logston@gmail.com
-	signingkey = 3D5749A33D6DDEF2
+# [user] section is configured via env vars. See dotfiles README for details.
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim
