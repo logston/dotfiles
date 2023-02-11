@@ -21,4 +21,4 @@
 [rerere]
 	enabled = true
 [gpg]
-	program = gpg
+    program = gpg.git

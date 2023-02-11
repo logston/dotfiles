@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+### Git GPG Wrapper ###
+#
+# A program used by Git to wrap calls to GPG.
+#
+# This program pulls the GPG passphrase from the STDOUT of a second program and
+# passes the passphrase as a flag value to GPG. This program can be used in
+# place of gpg by Git to offload passphrase management to another program (eg.
+# LastPass, 1Password, etc).
+#
+# The secondary program (by default called ~/.gpg.echo-passphrase) can be as simple as:
+#
+#     OP_ITEM_NAME="GPG Passphrase"
+#     op item get $OP_ITEM_NAME --format=json \
+#         | jq -r '.fields[] | select(.id == "password").value'
+#
+# The secondary program path can be specified with the env var $GPG_ECHO_PASSPHRASE_BIN.
+#
+# The .gitconfig file would be updated to point to this file. Assuming git.gpg
+# is locatable on $PATH.
+#
+#     [gpg]
+#         program = gpg.git
+#
+#
+# Uncomment this line to view what args are being passed by Git to GPG.
+#
+# echo "$@" >> /tmp/git.gpg.args.txt
+#
+# Examples are:
+#     --status-fd=2 -bsau 1AB00E2439AB1403!
+#     --keyid-format=long --status-fd=1 --verify /var/folders/8c/lvrg9rk97wbcy8b44h_llb9w0000gn/T//.git_vtag_tmpZ6shbe -
+
+GPG_ECHO_PASSPHRASE_BIN="${GPG_ECHO_PASSPHRASE_BIN:-~/.gpg.echo-passphrase}"
+
+gpg \
+    --pinentry-mode loopback \
+    --passphrase $($GPG_ECHO_PASSPHRASE_BIN) \
+    $@

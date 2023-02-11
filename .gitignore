@@ -7,6 +7,7 @@
 neovim/.config/nvim/undodir
 neovim/.config/gcloud/
 neovim/.config/coc/
+neovim/.config/op/
 
 # 9999-* are machine specific zsh scripts
 zsh/.zsh.d/9999-*
