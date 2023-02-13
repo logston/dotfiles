@@ -45,7 +45,7 @@ Key is valid for? (0)
 
 ```
 # Override .gitconfig values with machine-specific values
-export GIT_CONFIG_COUNT=3
+export GIT_CONFIG_COUNT=4
 export GIT_CONFIG_KEY_0=user.name
 export GIT_CONFIG_VALUE_0="Paul Logston"
 export GIT_CONFIG_KEY_1=user.email
@@ -53,6 +53,8 @@ export GIT_CONFIG_VALUE_1=paul.logston@
 export GIT_CONFIG_KEY_2=user.signingkey
 # gpg --list-keys --keyid-format LONG, use signing key with !
 export GIT_CONFIG_VALUE_2=1AB00E2439AB1403!
+export GIT_CONFIG_KEY_3=gpg.program
+export GIT_CONFIG_VALUE_3=gpg.git
 ```
 
 Make sure you have git >= 2.37: `git --version`

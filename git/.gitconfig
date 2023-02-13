@@ -20,5 +20,3 @@
 	ff = only
 [rerere]
 	enabled = true
-[gpg]
-    program = gpg.git
