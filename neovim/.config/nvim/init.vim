@@ -10,6 +10,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ruanyl/vim-gh-line'
+Plug 'jesseleite/vim-agriculture'
 
 " Code Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -107,7 +108,9 @@ set incsearch " incrementally highlight as search takes place
 " File search
 nnoremap <C-f> :GFiles<CR>
 " String search
-nnoremap  <C-g> :exec 'Rg' expand('<cword>')<CR>
+nnoremap  <C-g> :exec 'RgRaw' expand('<cword>')<CR>
+
+"command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 " Show FZF window with preview at top and taking up 80% of the preview window.
 let g:fzf_preview_window = ['up:80%']
 
