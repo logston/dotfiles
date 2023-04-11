@@ -7,9 +7,9 @@ export EDITOR="$VISUAL"
 # history even if multiple bash sessions are in use.
 export PROMPT_COMMAND='history -a'
 
-env() {
-    /usr/bin/env | sort
-}
+# env() {
+#     /usr/bin/env | sort
+# }
 
 ### FZF
 # Install fzf triggers
@@ -31,10 +31,11 @@ alias gt='git tag'
 alias gdmh='git diff master HEAD'
 alias git-flush='git add . && git reset HEAD --hard'
 
-function gupm-inner() {
+function git-fetch-upstream-push() {
 	branch=$(git branch --show-current)
 	if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
-		git fetch upstream
+        echo "Refreshing from upstream $branch"
+		git fetch upstream "$branch"
 		git pull upstream "$branch"
 		git push origin "$branch"
 		git fetch
@@ -43,12 +44,24 @@ function gupm-inner() {
 	fi
 }
 
+function git-pull-origin() {
+	branch=$(git branch --show-current)
+	if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+		git pull origin "$branch"
+	else
+		echo "Can not gupm while on $branch"
+	fi
+}
+
 function gupm() {
 	stat .git/refs/remotes/upstream &> /dev/null
-	if [ $? ]; then
-		gupm-inner
+	if [ $? -ne 0 ]; then
+        # No upstream defined.
+        echo "Refreshing from origin"
+		git-pull-origin
 	else
-		git fetch
+        echo "Refreshing from upstream"
+        git-fetch-upstream-push
 	fi
 }
 
