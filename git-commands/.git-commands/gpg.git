@@ -32,7 +32,7 @@
 #     --status-fd=2 -bsau 1AB00E2439AB1403!
 #     --keyid-format=long --status-fd=1 --verify /var/folders/8c/lvrg9rk97wbcy8b44h_llb9w0000gn/T//.git_vtag_tmpZ6shbe -
 
-GPG_ECHO_PASSPHRASE_BIN="${GPG_ECHO_PASSPHRASE_BIN:-~/.gpg.echo-passphrase}"
+GPG_ECHO_PASSPHRASE_BIN="${GPG_ECHO_PASSPHRASE_BIN:-$HOME/.gpg.echo-passphrase}"
 
 gpg \
     --pinentry-mode loopback \

@@ -34,7 +34,6 @@ alias git-flush='git add . && git reset HEAD --hard'
 function git-fetch-upstream-push() {
 	branch=$(git branch --show-current)
 	if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
-        echo "Refreshing from upstream $branch"
 		git fetch upstream "$branch"
 		git pull upstream "$branch"
 		git push origin "$branch"
@@ -57,11 +56,18 @@ function gupm() {
 	stat .git/refs/remotes/upstream &> /dev/null
 	if [ $? -ne 0 ]; then
         # No upstream defined.
-        echo "Refreshing from origin"
 		git-pull-origin
 	else
-        echo "Refreshing from upstream"
         git-fetch-upstream-push
+	fi
+}
+
+function gcom() {
+    git branch | grep '^\s\+main$' &> /dev/null
+	if [ $? -ne 0 ]; then
+		git checkout master
+	else
+		git checkout main
 	fi
 }
 
