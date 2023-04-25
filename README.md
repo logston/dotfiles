@@ -83,4 +83,5 @@ sudo tlmgr install xelatex
 sudo tlmgr install algorithms
 sudo tlmgr install algorithmicx
 sudo tlmgr install titlesec
+sudo tlmgr install tikz-qtree
 ```
