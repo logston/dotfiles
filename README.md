@@ -10,8 +10,11 @@
 
 When setting up a new machine, first get few basics installed:
 
+- If Mac, Enroll Mac in Find My Mac (sign into iCloud)
 - Oh-my-zsh (and potentially zsh): https://ohmyz.sh/#install
 - brew: https://brew.sh/
+- Install temp GitHub SSH key.
+    - `ssh-keygen ...`
 - ./setup.sh from above
 - Tmux Plugin Manager: https://github.com/tmux-plugins/tpm
 
@@ -74,6 +77,11 @@ Run `tmux attach-session -t Default` after shelling in.
 
 - Install Vim-plug: https://github.com/junegunn/vim-plug
 - Install nvm for node and Coc: `nvm install v18.13.0`
+
+### Hammerspoon
+
+Once Hammerspoon is installed by `brew`, install the Shift-It tool:
+https://github.com/peterklijn/hammerspoon-shiftit
 
 ### LaTex
 

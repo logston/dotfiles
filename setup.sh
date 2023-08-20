@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p ~/.zsh.d
+
 if [ ! -d ~/.dotfiles ]; then
     git clone git@github.com:logston/dotfiles.git ~/.dotfiles
 fi
