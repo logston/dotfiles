@@ -71,6 +71,14 @@ function gcom() {
 	fi
 }
 
+function gco-remote() {
+    if [[ "$1" == *":"* ]]; then
+        gco $(echo "$1" | cut -d':' -f2)
+    else
+        gco $1
+    fi
+}
+
 
 git-help() {
   echo "gt — git tag"
