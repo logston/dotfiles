@@ -219,3 +219,7 @@ autocmd BufNewFile,BufRead *.java
 autocmd BufNewFile,BufRead *.js,*.jsx,*.html,*.css
     \ set tabstop=2 |
     \ set shiftwidth=2
+
+" --- Copilot
+" Disable Copilot by default
+let g:copilot_enabled = v:false

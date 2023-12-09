@@ -1,62 +1,62 @@
 {
-	"suggest.noselect": false,
-	"diagnostic.checkCurrentLine": true,
-	"python.linting.flake8Enabled": true,
-	"coc.preferences.formatOnSaveFiletypes": [
-		"java",
-		"json"
-	],
-	"java.trace.server": "verbose",
-	"java.format.enabled": true,
-	"java.format.settings.url": "~/.dotfiles/neovim/.config/nvim/java-jhu-style.xml",
-	"java.format.settings.profile": "JHUStyle",
-	"languageserver": {
-		"golang": {
-			"command": "gopls",
-			"rootPatterns": [
-				"go.mod"
-			],
-			"trace.server": "verbose",
-			"filetypes": [
-				"go"
-			]
-		},
-		"terraform": {
-			"command": "terraform-ls",
-			"args": [
-				"serve"
-			],
-			"filetypes": [
-				"terraform",
-				"tf"
-			]
-		},
-		"ccls": {
-			"command": "ccls",
-			"filetypes": [
-				"c",
-				"cpp",
-				"objc",
-				"objcpp"
-			],
-			"rootPatterns": [
-				".ccls",
-				"compile_commands.json",
-				".vim/",
-				".git/",
-				".hg/"
-			],
-			"initializationOptions": {
-				"cache": {
-					"directory": "/tmp/ccls"
-				},
-				"index": {
-					"onChange": true
-				},
-				"highlight": {
-					"lsRanges": true
-				}
-			}
-		}
-	}
+  "suggest.noselect": false,
+  "diagnostic.checkCurrentLine": true,
+  "python.linting.flake8Enabled": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "java",
+    "json"
+  ],
+  "java.trace.server": "verbose",
+  "java.format.enabled": true,
+  "java.format.settings.url": "~/.dotfiles/neovim/.config/nvim/java-jhu-style.xml",
+  "java.format.settings.profile": "JHUStyle",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "trace.server": "verbose",
+      "filetypes": [
+        "go"
+      ]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [
+        "serve"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "index": {
+          "onChange": true
+        },
+        "highlight": {
+          "lsRanges": true
+        }
+      }
+    }
+  }
 }
