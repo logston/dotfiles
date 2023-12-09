@@ -14,3 +14,10 @@ zsh/.zsh.d/9999-*
 
 # Machine specific tmux file
 tmux/.tmux.local.conf
+
+# Auth Tokens in this file
+neovim/.config/github-copilot/hosts.json
+
+# Do not want to run risk of PII or passwords leaking from these plugins.
+neovim/.config/pgcli/
+neovim/.config/wireshark/
