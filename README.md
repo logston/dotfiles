@@ -88,6 +88,7 @@ https://github.com/peterklijn/hammerspoon-shiftit
 ```
 sudo tlmgr update --self
 sudo tlmgr install xelatex
+sudo tlmgr install biblatex
 sudo tlmgr install algorithms
 sudo tlmgr install algorithmicx
 sudo tlmgr install titlesec
