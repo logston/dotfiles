@@ -1,24 +1,38 @@
 # This is Git's per-user configuration file.
 # [user] section is configured via env vars. See dotfiles README for details.
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = nvim
+    excludesfile = ~/.gitignore_global
+    editor = nvim
+
 [init]
-	templateDir = ~/.git-template
-	defaultBranch = main
+    templateDir = ~/.git-template
+    defaultBranch = main
+
 [fetch]
-	prune = true
+    prune = true
+
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+
 [commit]
-	gpgsign = true
-	template = ~/.git_commit_message
+    gpgsign = true
+    template = ~/.git_commit_message
+
 [pull]
-	ff = only
+    ff = only
+
 [rerere]
-	enabled = true
+    enabled = true
+
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
+
+[user]
+    name = Paul Logston
+    email = paul.logston@gmail.com
+
+[diff "tex"]
+    textconv = cat
