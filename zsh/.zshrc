@@ -70,6 +70,7 @@ plugins=(
   gcloud
   git
   zsh-interactive-cd
+  poetry
 )
 
 source $ZSH/oh-my-zsh.sh
