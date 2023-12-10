@@ -90,8 +90,11 @@ git-help() {
   echo "gupm - git fetch upstream && git pull upstream master && git push origin master"
 }
 
+### Homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 ### PyEnv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=0
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # Add pyenv to path
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
