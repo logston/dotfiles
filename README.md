@@ -88,10 +88,21 @@ https://github.com/peterklijn/hammerspoon-shiftit
 
 ```
 sudo tlmgr update --self
-sudo tlmgr install xelatex
-sudo tlmgr install biblatex
-sudo tlmgr install algorithms
+sudo tlmgr install adjustbox
+sudo tlmgr install algorithm2e
 sudo tlmgr install algorithmicx
-sudo tlmgr install titlesec
+sudo tlmgr install algorithms
+sudo tlmgr install biblatex
+sudo tlmgr install collection-fontsrecommended
+sudo tlmgr install enumitem
+sudo tlmgr install environ
+sudo tlmgr install ifoddpage
+sudo tlmgr install pdfcol
+sudo tlmgr install relsize
+sudo tlmgr install subfigure
+sudo tlmgr install tcolorbox
 sudo tlmgr install tikz-qtree
+sudo tlmgr install titlesec
+sudo tlmgr install titling
+sudo tlmgr install xelatex
 ```
