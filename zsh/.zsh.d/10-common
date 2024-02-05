@@ -11,6 +11,10 @@ export PROMPT_COMMAND='history -a'
 #     /usr/bin/env | sort
 # }
 
+### Docker
+# How often do we push to a darwin or ARM system? Not often.
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 ### FZF
 # Install fzf triggers
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
