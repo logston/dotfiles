@@ -1,0 +1,7 @@
+#!/bin/bash
+$(op whoami &> /dev/null)
+echo "Checking!"
+if [ $? ]; then
+    echo "Sign in!"
+    eval $(op signin)
+fi

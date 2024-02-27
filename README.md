@@ -13,7 +13,8 @@ When setting up a new machine, first get few basics installed:
 - If Mac, Enroll Mac in Find My Mac (sign into iCloud)
 - Oh-my-zsh (and potentially zsh): https://ohmyz.sh/#install
 - brew: https://brew.sh/
-- Install temp GitHub SSH key.
+- `eval "$(/opt/homebrew/bin/brew shellenv)"`
+- Install temp GitHub SSH key (MUST DO THIS TO DOWNLOAD .dotfiles).
     - `ssh-keygen ...`
 - ./setup.sh from above
 - Tmux Plugin Manager: https://github.com/tmux-plugins/tpm

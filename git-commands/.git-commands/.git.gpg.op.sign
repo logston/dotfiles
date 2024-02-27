@@ -32,9 +32,13 @@
 #     --status-fd=2 -bsau 1AB00E2439AB1403!
 #     --keyid-format=long --status-fd=1 --verify /var/folders/8c/lvrg9rk97wbcy8b44h_llb9w0000gn/T//.git_vtag_tmpZ6shbe -
 
-GPG_ECHO_PASSPHRASE_BIN="${GPG_ECHO_PASSPHRASE_BIN:-$HOME/.gpg.echo-passphrase}"
-
+#
+#
+# Git runs: "gpg --status-fd=2 -bsau 7731E6..." (ie. $key) to sign a commit.
+# gpg -bsau $key = gpg --detach-sign --sign --armor --local-user $key
 gpg \
-    --pinentry-mode loopback \
-    --passphrase $($GPG_ECHO_PASSPHRASE_BIN) \
+    --batch \
+    --yes \
+    --passphrase "$(op item get ${OP_ITEM_ID_GPG_PASSPHRASE} --fields password)" \
+    --pinentry-mode "loopback" \
     $@
