@@ -121,7 +121,9 @@ export PATH="$HOME/.local/bin:$PATH"
 ### Golang
 export GOPATH="$HOME/Code/go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/go@1.21/bin:$PATH"
 alias godoc='GO111MODULE=off godoc'
+export GOPRIVATE=github.com/logston
 
 ### gcloud
 # The next line updates PATH for the Google Cloud SDK.

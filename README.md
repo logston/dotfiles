@@ -85,6 +85,18 @@ Run `tmux attach-session -t Default` after shelling in.
 Once Hammerspoon is installed by `brew`, install the Shift-It tool:
 https://github.com/peterklijn/hammerspoon-shiftit
 
+
+### Toggl
+
+- `go install github.com/logston/toggl`
+- Install Toggl API key: `~/.toggl-api-key`
+- Create Mac shortcut via the Mac Shortcuts app.
+  - Receive no input from quick actions.
+  - Run Shell Script
+    - `/Users/logston/Code/go/bin/toggl`
+  - Set Details
+    - Set "Run with:"
+
 ### LaTex
 
 ```
