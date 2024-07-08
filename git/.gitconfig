@@ -18,7 +18,7 @@
     clean = git-lfs clean -- %f
 
 [commit]
-    gpgsign = true
+    #gpgsign = true
     template = ~/.git_commit_message
     verbose = true
 
